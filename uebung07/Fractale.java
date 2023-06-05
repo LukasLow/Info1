@@ -45,9 +45,9 @@ public class Fractale {
             sb.reverse();
             String reverse = sb.toString();
             // Ersetzt die Zeichen in der umgekehrten Drachenkurve gemäß den Regeln
-            reverse = reverse.replace('R', 't');
-            reverse = reverse.replace('L', 'R');
-            reverse = reverse.replace('t', 'L');
+            reverse = reverse.replace('R', 't'); //ersetzt alle Rs mit t
+            reverse = reverse.replace('L', 'R'); //ersetzt alle Ls mit R
+            reverse = reverse.replace('t', 'L'); //ersetzt alle ts mit L
 
             // Generiert die nächste Iteration der Drachenkurve
             dragon = dragon + "R" + reverse;
@@ -68,25 +68,25 @@ public class Fractale {
         // Initialisiert die Levy C Kurve mit dem Zeichen F
         String levy = "F";
 
-        // Schleife, die k-male läuft, um die Levy C Kurve zu machen
+        // Schleife, die k-mal läuft, um die Levy C Kurve zu machen
         for (int i = 0; i < k; i++) {
-            // Durchlaeuft einen Prozess zur Erzeugung der nächsten Iteration der Lévy-C-Kurve
-            String temp = levy.replace('F', 't');
-            temp = temp.replace('+', 'F');
-            temp = temp.replace('-', '+');
-            temp = temp.replace('t', '-');
-            levy = "+" + levy + "--" + levy + "+";
-            levy = levy.replace('F', 't');
-            levy = levy.replace('+', 'F');
-            levy = levy.replace('-', '+');
-            levy = levy.replace('t', '-');
+            // Durchläuft einen Prozess zur Erzeugung der nächsten Iteration der Lévy-C-Kurve
+            String temp = levy.replace('F', 't'); // ersetzt alle Fs durch temporäres Zeichen ts
+            temp = temp.replace('+', 'F'); // ersetzt alle '+ surch's'
+            temp = temp.replace('-', '+'); // ersetzt alle -s durch +s
+            temp = temp.replace('t', '-'); // ersetzt das temporäre Zeichen ts (ursprünglich 'F') durch -s
+            levy = "+" + levy + "--" + levy + "+"; // erzeugt die nächste Iteration der Lévy-C-Kurve
+            levy = levy.replace('F', 't'); // ersetzt alle Fs durch temporäres Zeichen ts
+            levy = levy.replace('+', 'F'); // ersetzt alle +s durch Fs
+            levy = levy.replace('-', '+'); // ersetzt alle -s durch +s
+            levy = levy.replace('t', '-'); // ersetzt das temporäre Zeichen ts (ursprünglich Fs) durch -s
         }
 
         // Ersetzt die Zeichen in der Levy-C Kurve gemäß den Regeln
-        levy = levy.replace('F', 't');
-        levy = levy.replace('+', 'F');
-        levy = levy.replace('-', 'R');
-        levy = levy.replace('t', 'L');
+        levy = levy.replace('F', 't'); // ersetzt alle Fs durch ts
+        levy = levy.replace('+', 'F'); // ersetzt alle +s durch Fs
+        levy = levy.replace('-', 'R'); // ersetzt alle -s durch Rs
+        levy = levy.replace('t', 'L'); // ersetzt alle ts durch Ls
 
         // Ausgabe der Levy C Curve
         return levy;
