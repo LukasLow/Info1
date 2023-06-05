@@ -1,4 +1,4 @@
-package Apps.GitHub.Info1.uebung07;
+package Info1.uebung07;
 import edu.princeton.cs.introcs.StdRandom;
 
 
