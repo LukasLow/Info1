@@ -1,27 +1,31 @@
-package Info1.uebung07;
-import edu.princeton.cs.introcs.StdRandom;
-
+//javac -classpath .:stdlib.jar Fractal.java
+//java -classpath .:stdlib.jar Fractal.java 5
 
 public class Fractal {
-    public static void randomSequence(int k) {
-        if (k < 0 || k > 100000) {
-            System.out.println("Invalid length");
-            return;
+    public static String dragonCurve(int k) {
+        if (k < 0 || k > 20) {
+            System.out.println("Invalid order");
+            return "";
         }
 
-        String alphabet = "FLR";
-        StringBuilder result = new StringBuilder(k);
+        String dragon = "F";
 
         for (int i = 0; i < k; i++) {
-            char randomChar = alphabet.charAt(StdRandom.uniform(alphabet.length()));
-            result.append(randomChar);
+            StringBuilder sb = new StringBuilder(dragon);
+            sb.reverse();
+            String reverse = sb.toString();
+            reverse = reverse.replace('R', 't');
+            reverse = reverse.replace('L', 'R');
+            reverse = reverse.replace('t', 'L');
+
+            dragon = dragon + "R" + reverse;
         }
 
-        System.out.println(result.toString());
+        return dragon;
     }
 
     public static void main(String[] args) {
         int k = Integer.parseInt(args[0]);
-        randomSequence(k);
+        System.out.println(dragonCurve(k));
     }
 }
